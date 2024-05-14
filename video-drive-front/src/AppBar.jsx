@@ -7,9 +7,13 @@ import MenuIcon from "@mui/icons-material/Menu.js";
 import Typography from "@mui/material/Typography";
 import {Badge} from "@mui/material";
 import Button from "@mui/material/Button";
+import {useContext} from "react";
+import {PanierContext} from "./main.jsx";
 
 export function ButtonAppBar() {
     let navigate = useNavigate();
+    const { panier, _ } = useContext(PanierContext);
+
 
     return (<Box sx={{flexGrow: 1}}>
         <AppBar position="static">
@@ -29,7 +33,7 @@ export function ButtonAppBar() {
                 <Button color="inherit" onClick={(e) => {
                     navigate("/")
                 }}>Voir tout les produits</Button>
-                <Badge badgeContent={4} color="warning">
+                <Badge badgeContent={panier.length} color="warning">
                     <Button color="inherit" onClick={(e) => {
                         navigate("/panier")
                     }}>Panier</Button>
