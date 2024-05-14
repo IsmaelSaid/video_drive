@@ -20,8 +20,8 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
-    private ?string $price = null;
+    #[ORM\Column(type: Types::FLOAT, precision: 5, scale: 2)]
+    private ?float $price = null;
 
     #[ORM\Column(length: 255)]
     private ?string $brand = null;
@@ -61,12 +61,12 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): static
+    public function setPrice(float $price): static
     {
         $this->price = $price;
 

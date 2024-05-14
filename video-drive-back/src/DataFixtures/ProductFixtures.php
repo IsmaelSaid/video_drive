@@ -10,25 +10,61 @@ class ProductFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $product1 = new Product();
-        $product1->setName('Xbox one');
-        $product1->setDescription('Console de jeux');
-        $product1->setPrice('299.99');
-        $product1->setBrand('Microsoft');
-        $product1->setCategory('Console');
-        $product1->setPicture('assets/xbox.png'); // Add the path to the picture         $product = new Product();
 
-        $product2 = new Product();
-        $product2->setName('Playstation 5');
-        $product2->setDescription('Console de jeux');
-        $product2->setPrice('499.99');
-        $product2->setBrand('Sony');
-        $product2->setCategory('Console');
-        $product2->setPicture('assets/ps5.png'); // Add the path to the picture
+        $products = [
+            [
+                'name' => 'Xbox one',
+                'description' => 'Console de jeux',
+                'price' => 299.99,
+                'brand' => 'Microsoft',
+                'category' => 'Console',
+                'picture' => 'assets/xbox.png'
+            ],
+            [
+                'name' => 'Playstation 5',
+                'description' => 'Console de jeux',
+                'price' => 499.99,
+                'brand' => 'Sony',
+                'category' => 'Console',
+                'picture' => 'assets/ps5.png'
+            ],
+            [
+                'name' => 'Nintendo Switch',
+                'description' => 'Console de jeux',
+                'price' => 299.99,
+                'brand' => 'Nintendo',
+                'category' => 'Console',
+                'picture' => 'assets/switch.png'
+            ],
+            [
+                'name' => 'FIFA 21',
+                'description' => 'Jeu de foot',
+                'price' => 59.99,
+                'brand' => 'EA Sports',
+                'category' => 'Jeu',
+                'picture' => 'assets/fifa21.png'
+            ],
+            [
+                'name' => 'Call of Duty',
+                'description' => 'Jeu de guerre',
+                'price' => 59.99,
+                'brand' => 'Activision',
+                'category' => 'Jeu',
+                'picture' => 'assets/cod.png'
+            ]
+        ];
 
+        foreach ($products as $productData) {
+            $product = new Product();
+            $product->setName($productData['name']);
+            $product->setDescription($productData['description']);
+            $product->setPrice($productData['price']);
+            $product->setBrand($productData['brand']);
+            $product->setCategory($productData['category']);
+            $product->setPicture($productData['picture']);
+            $manager->persist($product);
 
-        $manager->persist($product1);
-        $manager->persist($product2);
+        }
 
         $manager->flush();
 
