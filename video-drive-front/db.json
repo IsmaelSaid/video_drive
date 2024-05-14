@@ -1,0 +1,85 @@
+{
+  "product": [
+    {
+      "ProductID": "1",
+      "Name": "Xbox one",
+      "Description": "a product",
+      "price": 300,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Microsoft",
+      "category": "Console"
+    },
+    {
+      "ProductID": "2",
+      "Name": "PS4",
+      "Description": "a product",
+      "price": 400,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Sony",
+      "category": "Console"
+    },
+    {
+      "ProductID": "3",
+      "Name": "Nintendo Switch",
+      "Description": "a product",
+      "price": 400,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Nintendo",
+      "category": "Console"
+    },
+    {
+      "ProductID": "4",
+      "Name": "Xbox 360",
+      "Description": "a product",
+      "price": 150,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Microsoft",
+      "category": "Console"
+    },
+    {
+      "ProductID": "5",
+      "Name": "PS3",
+      "Description": "a product",
+      "price": 150,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Sony",
+      "category": "Console"
+    },
+    {
+      "ProductID": "6",
+      "Name": "Wii",
+      "Description": "a product",
+      "price": 100,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Nintendo",
+      "category": "Console"
+    },
+    {
+      "ProductID": "6",
+      "Name": "Wii",
+      "Description": "a product",
+      "price": 50,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Nintendo",
+      "category": "Console"
+    },
+    {
+      "ProductID": "6",
+      "Name": "Wii",
+      "Description": "a product",
+      "price": 50,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Nintendo",
+      "category": "Console"
+    },
+    {
+      "ProductID": "6",
+      "Name": "Manette ps5",
+      "Description": "a product",
+      "price": 60,
+      "Pic": "https://picsum.photos/seed/picsum/200/300",
+      "Brand": "Sony",
+      "category": "accessoire"
+    }
+  ]
+}
