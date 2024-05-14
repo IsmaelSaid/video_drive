@@ -6,7 +6,7 @@ import {Card, CardActionArea, CardActions, CardContent, CardMedia} from "@mui/ma
 import Button from "@mui/material/Button";
 
 export function DisplayProducts({products}) {
-    return <div style={{display: "flex", flexWrap: 'wrap'}}>
+    return <div style={{display: "flex", flexWrap: 'wrap', justifyContent : "space-between"}}>
         {products.length === 0 ? <p>Aucune données</p> : products.map((product, index) => <DisplayProduct key={index}
                                                                                                           product={product}></DisplayProduct>)}
     </div>
@@ -18,7 +18,7 @@ export function DisplayProducts({products}) {
     Ce composant permet d'afficher un produit
 */
 export function DisplayProduct({product}) {
-    return (<Card sx={{minWidth: 100, maxWidth: 200}} style={{margin: '0px 20px 50px 0px'}}>
+    return (<Card  style={{margin: '0px 20px 50px 0px'}}>
         <CardActionArea>
             <CardMedia component='img' image={product.Pic}></CardMedia>
 

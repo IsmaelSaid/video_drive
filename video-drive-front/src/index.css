@@ -1,7 +1,9 @@
 body {
     height: 100%;
     margin: 0;
+    background-color: lightgray;
+
 }
 #root{
-    height: 100vh;
+    background-color: lightgray;
 }
