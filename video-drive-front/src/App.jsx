@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {createContext, useEffect, useState} from 'react'
 import Typography from '@mui/material/Typography';
 import {DisplayProducts} from "./Product.jsx";
 import './App.css'
@@ -7,6 +7,7 @@ import AppBar from "@mui/material/AppBar";
 import {ButtonAppBar} from "./AppBar.jsx";
 
 function App() {
+
     const [products, setProduct] = useState([])
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(Number.MAX_SAFE_INTEGER)
@@ -15,99 +16,108 @@ function App() {
     const [selectedBrand, setSelectedBrand] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('')
     useEffect(() => {
-        fetch('http://localhost:3000/product')
+        fetch('https://127.0.0.1:8000/products')
             .then(response => response.json())
             .then(data => {
-                setProduct(data);
-                setBrands([...new Set(data.map((element)=>element.Brand))]);
-                setCategories([...new Set(data.map((element)=>element.category))]);
+                setProduct(data.data);
+                setBrands([...new Set(data.data.map((element) => element.brand))]);
+                setCategories([...new Set(data.data.map((element) => element.category))]);
             });
     }, []);
 
 
-    return (<div>
-        <ButtonAppBar></ButtonAppBar>
+    return (
+            <div>
+                <ButtonAppBar></ButtonAppBar>
+                <div style={{display: "flex", justifyContent: "center"}}>
+                    <div style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        backgroundColor: 'white',
+                        width: '90%',
+                        borderRadius: '10px'
+                    }}>
+                        <div style={{padding: '20px'}}>
+                            <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
+                                Filtres
+                            </Typography>                            <FormGroup style={{display: "flex"}}>
+                                <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
+                                    <InputLabel id="demo-simple-select-filled-label">Marque</InputLabel>
+                                    <Select
+                                        label={"Marque"}
+                                        variant={"filled"}
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={selectedBrand}
+                                        onChange={(e) => {
+                                            setSelectedBrand(e.target.value)
+                                        }}
+                                    >
+                                        <MenuItem value="">
+                                            Tous
+                                        </MenuItem>
+                                        {brands.map((marque, index) => {
+                                            return <MenuItem key={index} value={marque}>{marque}</MenuItem>
+                                        })}
 
-        <div style ={{display : "flex", justifyContent : "center"}}>
-            <div style={{display: "flex", justifyContent: "center", backgroundColor: 'white', width : '90%', borderRadius : '10px'}}>
-                <div style={{padding: '20px'}}>
-                    <h1>Filtrer les produits</h1>
-                    <FormGroup style={{display: "flex"}}>
-                        <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
-                            <InputLabel id="demo-simple-select-filled-label">Marque</InputLabel>
-                            <Select
-                                label={"Marque"}
-                                variant={"filled"}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={selectedBrand}
-                                onChange={(e) => {
-                                    setSelectedBrand(e.target.value)
-                                }}
-                            >
-                                <MenuItem value="">
-                                    Tous
-                                </MenuItem>
-                                {brands.map((marque, index) => {
-                                    return <MenuItem key={index} value={marque}>{marque}</MenuItem>
-                                })}
+                                    </Select>
 
-                            </Select>
+                                </FormControl>
+                                <FormControl sx={{m: 1, minWidth: 120}}>
+                                    <TextField id="standard-basic" label="Search" variant="filled"/>
 
-                        </FormControl>
-                        <FormControl sx={{m: 1, minWidth: 120}}>
-                            <TextField id="standard-basic" label="Search" variant="filled"/>
+                                </FormControl>
 
-                        </FormControl>
+                                <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
+                                    <InputLabel id="demo-simple-select-label">Categorie</InputLabel>
+                                    <Select
+                                        variant={"filled"}
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={selectedCategory}
+                                        onChange={(e) => {
+                                            setSelectedCategory(e.target.value)
+                                        }}
+                                    >
+                                        <MenuItem value="">
+                                            Tous
+                                        </MenuItem>
+                                        {categories.map((type, index) => {
+                                            return <MenuItem key={index} value={type}>{type}</MenuItem>
+                                        })}
 
-                        <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
-                            <InputLabel id="demo-simple-select-label">Categorie</InputLabel>
-                            <Select
-                                variant={"filled"}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={selectedCategory}
-                                onChange={(e) => {
-                                    setSelectedCategory(e.target.value)
-                                }}
-                            >
-                                <MenuItem value="">
-                                    Tous
-                                </MenuItem>
-                                {categories.map((type, index) => {
-                                    return <MenuItem key={index} value={type}>{type}</MenuItem>
-                                })}
+                                    </Select>
 
-                            </Select>
+                                </FormControl>
+                                <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
+                                    <TextField id="standard-basic" type={"number"} label="prix min" variant="filled"
+                                               onChange={(e) => setMinPrice(parseInt(e.target.value) ? parseInt(e.target.value) : 0)}/>
 
-                        </FormControl>
-                        <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
-                            <TextField id="standard-basic" type={"number"} label="prix min" variant="filled"
-                                       onChange={(e) => setMinPrice(parseInt(e.target.value) ? parseInt(e.target.value) : 0)}/>
+                                </FormControl>
 
-                        </FormControl>
+                                <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
+                                    <TextField id="standard-basic" type={"number"} label="prix max" variant="filled"
+                                               onChange={(e) => setMaxPrice(parseInt(e.target.value) ? parseInt(e.target.value) : Number.MAX_SAFE_INTEGER)}/>
 
-                        <FormControl variant="filled" sx={{m: 1, minWidth: 120}}>
-                            <TextField id="standard-basic" type={"number"} label="prix max" variant="filled"
-                                       onChange={(e) => setMaxPrice(parseInt(e.target.value) ? parseInt(e.target.value) : Number.MAX_SAFE_INTEGER)}/>
-
-                        </FormControl>
-                    </FormGroup>
+                                </FormControl>
+                            </FormGroup>
 
 
-                </div>
-                <div style={{width: '50%', padding: '20px'}}>
-                    <h1>Les produits</h1>
+                        </div>
+                        <div style={{width: '50%', padding: '20px'}}>
+                            <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
+                                Les produits
+                            </Typography>
 
-                    <DisplayProducts products={products.filter((product) => {
-                        return product.price > minPrice && product.price < maxPrice && (selectedBrand === '' || product.Brand === selectedBrand) && (selectedCategory === '' || product.category === selectedCategory)
-                    })}></DisplayProducts>
+                            <DisplayProducts products={products.filter((product) => {
+                                return product.price > minPrice && product.price < maxPrice && (selectedBrand === '' || product.brand === selectedBrand) && (selectedCategory === '' || product.category === selectedCategory)
+                            })}></DisplayProducts>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-        </div>
-
-    </div>)
+    )
 }
 
 
