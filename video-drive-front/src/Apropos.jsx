@@ -3,9 +3,9 @@ import Typography from "@mui/material/Typography";
 
 export function Apropos() {
     return (
-        <div style={{height: "100vh", border: "1px solid red", display: "flex", flexDirection: "column", backgroundColor : "white"}}>
+        <div style={{height: "100vh", display: "flex", flexDirection: "column", backgroundColor: "white"}}>
             <ButtonAppBar></ButtonAppBar>
-            <div style={{display : "flex", height : "100%", justifyContent : "center"}}>
+            <div style={{display: "flex", height: "100%", justifyContent: "center"}}>
 
                 <div style={{
                     height: "100%",
@@ -14,36 +14,27 @@ export function Apropos() {
                     justifyContent: "center",
                     width: "50%",
                 }}>
-                    <div style={{height : '50px', backgroundImage : `url("public/background.jpeg")` }}>
+                    <div style={{height: '50px', backgroundImage: `url("public/background.jpeg")`}}>
 
                     </div>
-                    <div style={{ padding : "50px", fontSize : "larger"}}>
+                    <div style={{padding: "50px", fontSize: "larger"}}>
                         <Typography variant={'h3'}>
                             Notre histoire
                         </Typography>
-                        <Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue varius nulla vel
-                            accumsan.
-                            Nullam venenatis convallis nibh, vel vehicula lectus consectetur eget. Nulla quis mollis metus.
-                            Aenean
-                            velit magna, egestas sit amet tempus vitae, maximus lacinia nibh. Suspendisse potenti. Etiam
-                            facilisis
-                            molestie massa sed tempus. Nullam luctus vitae nisl non egestas. Morbi vel interdum leo, id
-                            viverra
-                            est.
-                            Nulla at consequat nibh. Nam efficitur sed nisi eu mattis. Sed posuere enim magna, vel blandit
-                            turpis
-                            porta eget.
+                        <Typography>
+                            Bienvenue dans l'univers palpitant des jeux vidéo, où l'aventure, l'excitation et
+                            l'émerveillement vous attendent à chaque coin de pixel. Nous sommes
+                            fiers d'être votre porte d'entrée vers cet univers infini de divertissement interactif. En
+                            tant que leader du marché, nous nous engageons à offrir à nos clients une expérience
+                            exceptionnelle, alliant innovation, passion et service de qualité.
                         </Typography>
                         <br/>
                         <Typography>
-                            Fusce a placerat neque. Suspendisse ut turpis dictum sapien facilisis dapibus at eu est. Proin
-                            rutrum
-                            libero in rutrum mollis. Nullam aliquam feugiat euismod. Aenean viverra enim nec nunc suscipit,
-                            auctor
-                            euismod massa pretium. In laoreet vulputate nunc et porttitor. Integer auctor, libero vel rutrum
-                            ultrices, enim erat dapibus mauris, at tempor purus felis vitae metus. Sed semper felis a dui
-                            maximus
-                            fringilla.
+                            Plongez dans notre vaste sélection de jeux vidéo, où chaque titre est soigneusement choisi
+                            pour répondre aux attentes des joueurs les plus exigeants. Que vous soyez un aventurier
+                            intrépide en quête de mondes fantastiques à explorer, un compétiteur chevronné cherchant des
+                            défis à relever, ou simplement un amateur de détente recherchant un divertissement ludique,
+                            notre collection diversifiée saura satisfaire toutes vos envies.
                         </Typography>
                     </div>
 
