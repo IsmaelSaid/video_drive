@@ -25,11 +25,18 @@ export function ButtonAppBar() {
                     aria-label="menu"
                     sx={{mr: 2}}
                 >
-                    <MenuIcon/>
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
                     Vidéo drive
                 </Typography>
+                <Button color="inherit" onClick={(e) => {
+                    navigate("/contact")
+                }}>Contact</Button>
+
+                <Button color="inherit" onClick={(e) => {
+                    navigate("/about")
+                }}>à propos</Button>
+
                 <Button color="inherit" onClick={(e) => {
                     navigate("/")
                 }}>Voir tout les produits</Button>
