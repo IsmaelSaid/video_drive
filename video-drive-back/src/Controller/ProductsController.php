@@ -6,18 +6,16 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Entity\Product;
 
-#[Route('/api')]
 class ProductsController extends AbstractController
 {
     #[Route('/products', name: 'app_products',methods: ['GET'])]
     public function index(EntityManagerInterface $em): JsonResponse
     {
-        $user = $this->getUser();
-
+        $AllProducts = $em->getRepository(Product::class)->findAll();
         return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ProductsController.php',
-        ]);
+            'data' =>$AllProducts,
+        ], 200); // Explicitly specify the status code
     }
 }
